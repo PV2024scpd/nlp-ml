@@ -19,6 +19,6 @@ Implemented Neural Machine Translation using RNNs to convert Cherokee-to-English
 
 # Assignment 5
 Transformer.
-- Highlights :  In Progress.
+- In Progress.
 
 
