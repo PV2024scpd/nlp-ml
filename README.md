@@ -2,8 +2,8 @@
 This repository contains all submitted code for NLP assignments!
 
 # Assignment 1
-This has implemented a co-occurence based word embedding model.
-- Changes Done : Compute Co-occurence Matrix and Truncated SVD to reduce K dims.
+Implemented co-occurence based word embedding model.
+- Key Changes : Compute Co-occurence Matrix and Truncated SVD to reduce K dims.
 
 # Assignment 2
 This has implemented the word2vec model and train word vectors using Stochastic Gradient Descent.
