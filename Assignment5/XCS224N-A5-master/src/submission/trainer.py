@@ -51,6 +51,7 @@ class Trainer:
         # take over whatever gpus are on the system
         self.device = 'cpu'
         if torch.cuda.is_available():
+            print('cuda')
             self.device = torch.cuda.current_device()
             self.model = torch.nn.DataParallel(self.model).to(self.device)
         elif torch.backends.mps.is_available() and torch.backends.mps.is_built():
