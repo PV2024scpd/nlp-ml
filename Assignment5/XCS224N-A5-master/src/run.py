@@ -123,7 +123,6 @@ def main():
 
     # Create model
     attention_model = create_model(args, mconf)
-    attention_model = attention_model.to(device)
 
     datetime_str = datetime.now().strftime("%Y%m%d-%H%M%S")
 
@@ -136,7 +135,6 @@ def main():
         float(args['--pretrain_lr']),
         float(args['--finetune_lr']),
         datetime_str))
-
 
     if(args["--compile"] == True):
         try:
