@@ -145,7 +145,7 @@ def main():
         except Exception as err:
             print(f"Model compile not supported: {err}")
 
-    attention_model = attention_model.to('cpu')
+    # attention_model = attention_model.to('cpu')
 
     if args['--function'] == "finetune":
         #TODO: Create new function to handle trainer initialization
