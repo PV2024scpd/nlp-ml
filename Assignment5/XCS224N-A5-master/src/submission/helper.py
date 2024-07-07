@@ -67,7 +67,7 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
     ### START CODE HERE
     if reading_params_path is None: # Finetuning without a pretrained model
         tconf = TrainerConfig(
-            max_epochs = 75,
+            max_epochs = 2,
             batch_size = 256,
             learning_rate =finetune_lr,
             lr_decay = True,

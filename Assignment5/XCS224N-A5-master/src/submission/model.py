@@ -183,7 +183,6 @@ class GPT(nn.Module):
         assert t <= self.block_size, "Cannot forward, model block size (%d, %d) is exhausted." % (t, self.block_size)
 
         # forward the GPT model
-        print("entering forward")
         token_embeddings = self.tok_emb(idx) # each index maps to a (learnable) vector
         position_embeddings = self.pos_emb[:, :t, :] # each position maps to a (learnable) vector
         x_input = self.drop(token_embeddings + position_embeddings)
