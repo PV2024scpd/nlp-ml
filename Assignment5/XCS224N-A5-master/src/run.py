@@ -123,6 +123,7 @@ def main():
 
     # Create model
     attention_model = create_model(args, mconf)
+    attention_model = attention_model.to(device)
 
     datetime_str = datetime.now().strftime("%Y%m%d-%H%M%S")
 
