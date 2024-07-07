@@ -82,16 +82,21 @@ class Trainer:
             nonlocal step
             is_train = split == 'train'
             model.train(is_train)
+            
             data = self.train_dataset if is_train else self.test_dataset
             loader = DataLoader(data, batch_size=config.batch_size, num_workers=config.num_workers)
+            print(loader)
 
             losses = []
             pbar = tqdm(enumerate(loader), total=len(loader)) if is_train else enumerate(loader)
             for it, (x, y) in pbar:
-
+                
+                print('test')
                 # place data on the correct device
                 x = x.to(self.device)
+                
                 y = y.to(self.device)
+                
 
                 # forward the model
                 with torch.set_grad_enabled(is_train):

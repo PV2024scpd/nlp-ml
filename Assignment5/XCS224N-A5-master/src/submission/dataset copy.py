@@ -181,23 +181,21 @@ class CharCorruptionDataset(Dataset):
         # 1. randomly truncate document length, min = 4, no more than int(self.block_size*3/4)
         doc_len = len(doc)
         truncated_len = random.randint(4, int(self.block_size * 3/4))
-        # truncated_len = min(truncated_len,doc_len)
+        truncated_len = min(truncated_len,doc_len)
         truncated_doc = doc[:truncated_len]
-        actual_len = len(truncated_doc)
         
         #2. Separate document into 3 parts, prefix, masked,suffix
-        start_idx = random.randint(1, actual_len-2)
-        end_idx = random.randint(start_idx + 1, actual_len -1)
+        masked_len = int(torch.randint(low=1, high= 2*int(truncated_len/4), size =(1,))[0])
+        masked_idx = int(torch.randint(low=0, high=truncated_len - int(truncated_len/4)+1, size=(1,))[0])
         
-        prefix = truncated_doc[:start_idx]
-        suffix = truncated_doc[end_idx:]
-        masked = truncated_doc[start_idx:end_idx]
+        prefix = truncated_doc[:masked_idx]
+        suffix = truncated_doc[masked_idx + masked_len:]
+        masked = truncated_doc[masked_idx : masked_idx + masked_len]
         
-        x = prefix + self.MASK_CHAR + suffix + self.MASK_CHAR + masked
-        x = x + self.PAD_CHAR * (self.block_size - len(x))
-        
-        y = x[1:]
-        x = x[:-1]
+        masked_string = prefix + self.MASK_CHAR + suffix + self.MASK_CHAR + self.PAD_CHAR*(self.block_size - len(prefix + self.MASK_CHAR + suffix + self.MASK_CHAR + masked) + 1)
+
+        x = masked_string[:-1]
+        y = masked_string[1:]
         
         x = torch.tensor([self.stoi[c] for c in x], dtype=torch.long)
         y = torch.tensor([self.stoi[c] for c in y], dtype=torch.long)

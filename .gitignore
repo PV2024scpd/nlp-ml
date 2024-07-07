@@ -2,3 +2,15 @@ Assignment5/XCS224N-A5-master/src/expt/evaluate/run_vanilla_32_pt_lr_0.006000_ft
 Assignment5/XCS224N-A5-master/src/expt/finetune/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-142433/events.out.tfevents.1720326273.Eswaripriyas-MacBook-Pro.local.7729.0
 Assignment5/XCS224N-A5-master/src/submission/vanilla.model.params
 Assignment5/XCS224N-A5-master/src/submission/vanilla.nopretrain.dev.predictions
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151004/events.out.tfevents.1720329004.Eswaripriyas-MacBook-Pro.local.9165.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151051/events.out.tfevents.1720329051.Eswaripriyas-MacBook-Pro.local.9200.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151309/events.out.tfevents.1720329189.Eswaripriyas-MacBook-Pro.local.9264.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151336/events.out.tfevents.1720329216.Eswaripriyas-MacBook-Pro.local.9297.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151403/events.out.tfevents.1720329243.Eswaripriyas-MacBook-Pro.local.9327.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151451/events.out.tfevents.1720329291.Eswaripriyas-MacBook-Pro.local.9379.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151506/events.out.tfevents.1720329306.Eswaripriyas-MacBook-Pro.local.9409.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151537/events.out.tfevents.1720329337.Eswaripriyas-MacBook-Pro.local.9439.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151650/events.out.tfevents.1720329410.Eswaripriyas-MacBook-Pro.local.9470.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151803/events.out.tfevents.1720329483.Eswaripriyas-MacBook-Pro.local.9522.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-151931/events.out.tfevents.1720329571.Eswaripriyas-MacBook-Pro.local.9603.0
+Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240707-152921/events.out.tfevents.1720330161.Eswaripriyas-MacBook-Pro.local.9807.0
