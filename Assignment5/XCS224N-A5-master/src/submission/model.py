@@ -87,6 +87,16 @@ class DownProjectBlock(nn.Module):
         ### Hint: Copy over the code from Block and make necessary modifications.
 
         ### START CODE HERE
+        self.ln1 = nn.LayerNorm(config.n_embd)
+        self.ln2 = nn.LayerNorm(config.n_embd)
+        self.attn = CausalCrossAttention(config)
+        self.C = nn.Parmeter(nn.init.xavier_uniform_(torch.empty(1, config.bottleneck_dim, config.n_embd)))
+        self.mlp = nn.Sequential(
+            nn.Linear(config.n_embd, 4 * config.n_embd),
+            nn.GELU(),
+            nn.Linear(4 * config.n_embd, config.n_embd),
+            nn.Dropout(config.resid_pdrop),
+        )
         ### END CODE HERE
 
     def forward(self, x_input):
@@ -98,6 +108,9 @@ class DownProjectBlock(nn.Module):
         ### Should be around 3-5 lines.
 
         ### START CODE HERE
+        x = self.attn(self.ln1(x_input),self.ln1(self.C))
+        x = x + self.mlp(self.ln2(x))
+        return x
         ### END CODE HERE
 
 
@@ -114,6 +127,15 @@ class UpProjectBlock(nn.Module):
         ### Hint: Copy over the code from Block and make necessary modifications.
 
         ### START CODE HERE
+        self.ln1 = nn.LayerNorm(config.n_embd)
+        self.ln2 = nn.LayerNorm(config.n_embd)
+        self.attn = CausalCrossAttention(config)
+        self.mlp = nn.Sequential(
+            nn.Linear(config.n_embd, 4 * config.n_embd),
+            nn.GELU(),
+            nn.Linear(4 * config.n_embd, config.n_embd),
+            nn.Dropout(config.resid_pdrop),
+        )
         ### END CODE HERE
 
     def forward(self, y, x_input):
@@ -126,6 +148,9 @@ class UpProjectBlock(nn.Module):
         ### Should be around 3-5 lines.
 
         ### START CODE HERE
+        x = self.attn(self.ln1(y), x_input)
+        x = x + self.mlp(self.ln2(x))
+        return x
         ### END CODE HERE
 
 class GPT(nn.Module):
