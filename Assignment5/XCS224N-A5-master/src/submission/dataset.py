@@ -180,7 +180,7 @@ class CharCorruptionDataset(Dataset):
         doc = self.data[idx]
         # 1. randomly truncate document length, min = 4, no more than int(self.block_size*3/4)
         doc_len = len(doc)
-        truncated_len = random.randint(4, int(self.block_size * 3/4))
+        truncated_len = random.randint(4, int(self.block_size * 7/8))
         truncated_len = min(truncated_len,doc_len)
         truncated_doc = doc[:truncated_len]
         
