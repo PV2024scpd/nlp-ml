@@ -77,7 +77,8 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
             writer = writer
         )
     else:
-        model.load_state_dict(torch.load(reading_params_path), map_location=torch.device('cuda'))
+        # model.load_state_dict(torch.load(reading_params_path), map_location=torch.device('cuda'))
+        model.load_state_dict(torch.load(reading_params_path))
         tconf = TrainerConfig(
             max_epochs = 10,
             batch_size = 256,
