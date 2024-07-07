@@ -61,7 +61,6 @@ def create_model(args, mconf):
         assert False
 
 def evaluate(args, pretrain_dataset, device, model):
-    print(device)
     assert args['--outputs_path'] is not None
     assert args['--reading_params_path'] is not None
     assert args['--eval_corpus_path'] is not None
