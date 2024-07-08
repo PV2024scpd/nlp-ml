@@ -90,7 +90,7 @@ class DownProjectBlock(nn.Module):
         self.ln1 = nn.LayerNorm(config.n_embd)
         self.ln2 = nn.LayerNorm(config.n_embd)
         self.attn = CausalCrossAttention(config)
-        self.C = nn.Parmeter(nn.init.xavier_uniform_(torch.empty(1, config.bottleneck_dim, config.n_embd)))
+        self.C = nn.Parameter(nn.init.xavier_uniform_(torch.empty(1, config.bottleneck_dim, config.n_embd)))
         self.mlp = nn.Sequential(
             nn.Linear(config.n_embd, 4 * config.n_embd),
             nn.GELU(),

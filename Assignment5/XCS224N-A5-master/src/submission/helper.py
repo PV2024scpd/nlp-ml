@@ -65,18 +65,7 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
     trainer_obj = None #Trainer object (see trainer.py for more details)
     tconf = None #TrainerConfig object (see trainer.py for more details)
     ### START CODE HERE
-    if reading_params_path is None: # Finetuning without a pretrained model
-        tconf = TrainerConfig(
-            max_epochs = 75,
-            batch_size = 256,
-            learning_rate =finetune_lr,
-            lr_decay = True,
-            warmup_token = 512 *20,
-            final_tokens = 200 * len(pretrain_dataset)*block_size,
-            num_workers = 0,
-            writer = writer
-        )
-    else:
+    if reading_params_path is not None: 
         # model.load_state_dict(torch.load(reading_params_path), map_location=torch.device('cuda'))
         model.load_state_dict(torch.load(reading_params_path))
         tconf = TrainerConfig(
@@ -86,9 +75,21 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
             lr_decay = True,
             warmup_token = 512 *20,
             final_tokens = 200 * len(pretrain_dataset)*block_size,
-            num_workers = 0,
+            num_workers = 2,
             writer = writer
         )
+    else: # Finetuning without a pretrained model
+        tconf = TrainerConfig(
+            max_epochs = 75,
+            batch_size = 256,
+            learning_rate =finetune_lr,
+            lr_decay = True,
+            warmup_token = 512 *20,
+            final_tokens = 200 * len(pretrain_dataset)*block_size,
+            num_workers = 2,
+            writer = writer
+        )
+
     # print(type(pretrain_dataset))
     finetune_dataset = NameDataset(open(finetune_corpus_path, encoding='utf-8').read(),pretrain_dataset)
     trainer_obj = Trainer(model, finetune_dataset, None, tconf)    
@@ -118,13 +119,13 @@ def pretrain(pretrain_dataset, block_size, model, pretrain_lr=6e-3, writer=None)
 
     ### START CODE HERE
     tconf = TrainerConfig(
-        max_epochs=100,
+        max_epochs=650,
         batch_size=128,
         learning_rate=pretrain_lr,
         lr_decay=True,
         warmup_tokens=512*20,
         final_tokens=200*len(pretrain_dataset)*block_size,
-        num_workers=2,
+        num_workers=4,
         writer=writer
     )
     trainer_obj = Trainer(model, pretrain_dataset, None, tconf)
