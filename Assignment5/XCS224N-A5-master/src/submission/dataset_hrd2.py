@@ -185,15 +185,18 @@ class CharCorruptionDataset(Dataset):
         truncated_doc = doc[:truncated_len]
         
         #2. Separate document into 3 parts, prefix, masked,suffix
-        masked_len = int(torch.randint(low=1, high= 2*int(truncated_len/4), size =(1,))[0])
-        masked_idx = int(torch.randint(low=0, high=truncated_len - int(truncated_len/4)+1, size=(1,))[0])
+        random_perturbation = random.randint(int(-0.125*truncated_len), int(0.125*truncated_len))
+        expected_mask_len = int(0.25*truncated_len + random_perturbation)
+        start_mask = random.randint(0, truncated_len - expected_mask_len)
         
-        prefix = truncated_doc[:masked_idx]
-        suffix = truncated_doc[masked_idx + masked_len:]
-        masked = truncated_doc[masked_idx : masked_idx + masked_len]
+        masked_content = truncated_doc[start_mask:start_mask+expected_mask_len]
+        prefix = truncated_doc[:start_mask]
+        suffix = truncated_doc[len(prefix)+expected_mask_len:]
         
-        masked_string = prefix + self.MASK_CHAR + suffix + self.MASK_CHAR + self.PAD_CHAR*(self.block_size - len(prefix + self.MASK_CHAR + suffix + self.MASK_CHAR + masked) + 1)
-
+        # 3. Rearrange these substrings into the following form:
+        masked_string = prefix + self.MASK_CHAR + suffix + self.MASK_CHAR + masked_content
+        masked_string += self.PAD_CHAR*(self.block_size - len(masked_string))
+        
         x = masked_string[:-1]
         y = masked_string[1:]
         
