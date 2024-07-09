@@ -26,3 +26,4 @@ Assignment5/XCS224N-A5-master/src/expt/pretrain/run_perceiver_32_pt_lr_0.006000_
 Assignment5/XCS224N-A5-master/src/expt/pretrain/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240708-102221/events.out.tfevents.1720398141.Eswaripriyas-MacBook-Pro.local.1583.0
 Assignment5/XCS224N-A5-master/src/--finetune_corpus_path
 Assignment5/XCS224N-A5-master/src/--writing_params_path
+Assignment5/XCS224N-A5-master/src/expt/evaluate/run_vanilla_32_pt_lr_0.006000_ft_lr_0.000600_20240709-181435/events.out.tfevents.1720512875.Eswaripriyas-MacBook-Pro.local.20836.0
